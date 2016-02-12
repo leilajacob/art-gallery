@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<div class="well">
+
+  <h1><%= @painting.title %></h1>
+
+  <p><%= image_tag @painting.image.url(:medium) %></p>
+
+  <p><%= number_to_currency @painting.price %></p>
+
+  <p><%= @painting.description %></p>
+
+  <p>
+    <strong>Dimensions:</strong>
+    <%= @painting.size %>
+  </p>
+
+  <p>
+    <strong>Materials:</strong>
+    <%= @painting.materials %>
+  </p>
+  
+  </div> 
+
+<%= link_to 'Edit', edit_painting_path(@painting) %> |
+<%= link_to 'Back', paintings_path %>
