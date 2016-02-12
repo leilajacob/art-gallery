@@ -1,2 +1,14 @@
 <h1> Leila Jacob </h1>
 <p>My paintings bounce back and forth from abstract to realism, and I enjoy blending the two using bright unusual colors.</p>
+
+<div class="row">
+	<% @paintings.each do |painting| %>
+		<div class="col-md-4">
+			<div class="well center-it">
+				<p><%= image_tag painting.image.url(:medium) %></p>
+				<p><%= link_to painting.title, painting %></p>
+				<p><%= number_to_currency painting.price %></p>
+			</div>
+		</div>
+	<% end %>
+</div>
