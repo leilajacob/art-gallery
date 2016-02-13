@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
 
+  get 'cart/addadd_to_cart'
+
+  get 'cart/view_order'
+
+  get 'cart/checkout'
+
+  resources :orders
+  resources :line_items
+  devise_for :users
   resources :paintings
   
   root 'welcome#index'
