@@ -6,9 +6,33 @@
 		<div class="col-md-4">
 			<div class="well center-it">
 				<p><%= image_tag painting.image.url(:medium) %></p>
-				<p><%= link_to painting.title, painting %></p>
-				<p><%= number_to_currency painting.price %></p>
-			</div>
+			
+	<!-- Button trigger modal -->
+	<p><a href="#" data-toggle="modal" data-target="#myModal_<%=painting.id %>">
+		<span class="glyphicon glyphicon-plus"></span> quick info
+	</a></p>
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal_<%= painting.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel"><%= painting.title %></h4>
+	      </div>
+	      <div class="modal-body">
+	        <p><%= image_tag painting.image.url(:medium) %></p>
+	        <p><%= number_to_currency painting.price %></p>
+	        <p><%= painting.description %></p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Save changes</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>
 		</div>
-	<% end %>
+<% end %>
 </div>
