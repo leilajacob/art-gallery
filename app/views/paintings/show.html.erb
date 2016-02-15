@@ -20,6 +20,14 @@
     <%= @painting.materials %>
   </p>
   
+  <p>
+    <%= form_tag('/ass_to_cart') do %>
+    <div class="cant-see-me">
+      <%= number_field_tag :painting_id, @painting.id %>
+    </div>
+    <%= submit_tag "Buy", class: "btn btn-info" %>
+    <% end %>
+  </p>
   </div> 
 
 <%= link_to 'Edit', edit_painting_path(@painting) %> |

@@ -1,2 +1,16 @@
-<h1>Cart#view_order</h1>
-<p>Find me in app/views/cart/view_order.html.erb</p>
+<h1>My Cart</h1>
+
+<div>
+	<% @line_items.each do |line_item| %>
+	<ul>
+		<li><%= line_item.painting.title %></li>
+		<li><%= number_to_currency line_item.painting.price %></li>
+	</ul>
+
+	<% end %>
+
+</div>
+
+<div>
+	<%= link_to "Proceed to Checkout", checkout_path, class: "btn btn-sucess" %>
+</div>
