@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
 
+  get 'charges/create'
+
+  get 'charges/new'
+
   post 'add_to_cart' => 'cart#add_to_cart'
 
   get 'view_order' => 'cart#view_order'
+
+  post 'order_complete' => 'cart#order_complete'
 
   post 'checkout' => 'cart#checkout'
 
