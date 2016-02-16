@@ -2,7 +2,7 @@ class CartController < ApplicationController
 
 	before_filter  :authenticate_user!, :except => [:add_to_cart, :view_order]
 
-  def addadd_to_cart
+  def add_to_cart
   	line_item = LineItem.new
   	line_iten.painting_id = params[:painting_id]
   	line_item.save
@@ -29,7 +29,7 @@ class CartController < ApplicationController
   	end
 
   	@order.subtotal = sum
-  	@order sales_tax = sum * 0.07
+  	@order.sales_tax = sum * 0.07
   	@order.grand_total = sum + @order.sales_tax
   	@order.save
 

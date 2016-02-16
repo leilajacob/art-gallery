@@ -21,14 +21,16 @@
   </p>
   
   <p>
-    <%= form_tag('/ass_to_cart') do %>
+    <%= form_tag('/add_to_cart') do %>
     <div class="cant-see-me">
       <%= number_field_tag :painting_id, @painting.id %>
     </div>
-    <%= submit_tag "Buy", class: "btn btn-info" %>
+    <%= submit_tag "Add To Cart", class: "btn btn-info" %>
     <% end %>
   </p>
   </div> 
 
+<% if can? :update, @article %>
 <%= link_to 'Edit', edit_painting_path(@painting) %> |
+<% end %>
 <%= link_to 'Back', paintings_path %>

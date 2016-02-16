@@ -1,6 +1,9 @@
 class PaintingsController < ApplicationController
   before_action :set_painting, only: [:show, :edit, :update, :destroy]
 
+  before_filter  :authenticate_user!, :except => [:index, :show]
+
+
   # GET /paintings
   # GET /paintings.json
   def index
@@ -10,6 +13,8 @@ class PaintingsController < ApplicationController
   # GET /paintings/1
   # GET /paintings/1.json
   def show
+    @painting = Painting.find(params[:id])
+
   end
 
   # GET /paintings/new
