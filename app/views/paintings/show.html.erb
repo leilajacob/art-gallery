@@ -1,7 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<div class="well">
-
   <h1><%= @painting.title %></h1>
 
   <p><%= image_tag @painting.image.url(:medium) %></p>
@@ -22,15 +20,16 @@
   
   <p>
     <%= form_tag('/add_to_cart') do %>
-    <div class="cant-see-me">
-      <%= number_field_tag :painting_id, @painting.id %>
-    </div>
+
     <%= submit_tag "Add To Cart", class: "btn btn-info" %>
     <% end %>
   </p>
-  </div> 
 
 <% if can? :update, @article %>
 <%= link_to 'Edit', edit_painting_path(@painting) %> |
 <% end %>
 <%= link_to 'Back', paintings_path %>
+
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
