@@ -38,9 +38,8 @@
     <%= f.label :materials %><br>
     <%= f.text_field :materials %>
   </div>
-  <div class="field">
-    <%= f.label :category_id %><br>
-    <%= f.number_field :category_id %>
+  <div class="form-group">
+    <%= f.select(:category_id, @categories.collect {|c| [c.name, c.id]}, {include_blank: "Sold or For Sale?"}) %>
   </div>
   <div class="actions">
     <%= f.submit %>

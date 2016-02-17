@@ -22,10 +22,12 @@ class PaintingsController < ApplicationController
   # GET /paintings/new
   def new
     @painting = Painting.new
+    @categories = Category.all
   end
 
   # GET /paintings/1/edit
   def edit
+    @categories = Category.all
   end
 
   # POST /paintings
