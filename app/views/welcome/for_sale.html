@@ -1,1 +1,57 @@
-for_sale.html
+<div class="jumbotron">
+</div>
+
+<HR WIDTH="60%" NOSHADE></hr>
+	<h2 class="center-it"><%= @category.name %></h2>
+<HR WIDTH="60%" NOSHADE></hr>
+
+<div class="row">
+<% @paintings.each do |painting| %>
+		<div class="col-md-4 center-it">
+
+			<div class="panel panel-default">
+  				<div class="panel-body">
+					<!-- Button trigger modal -->
+					<p><a href="#" data-toggle="modal" data-target="#myModal_<%=painting.id %>">
+						<%= image_tag painting.image.url(:medium) %>
+					</a></p>
+
+					<!-- Modal -->
+					<div class="modal fade" id="myModal_<%= painting.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					        <h4 class="modal-title" id="myModalLabel"><%= painting.title %></h4>
+					      </div>
+					      <div class="modal-body">
+					        <p><%= image_tag painting.image.url(:medium) %></p>
+					        <p><%= number_to_currency painting.price %></p>
+					        <p><%= painting.description %></p>
+					      </div>
+					      <div class="modal-footer">
+					      	<% if painting.quantity > 0 %>
+						        <p>
+						          <%= form_tag(add_to_cart_path, class: "form-inline") do %>
+						            <%= number_field_tag :quantity, nil, min: 1, placeholder: "How Many?" %>
+						            <%= hidden_field_tag :painting_id, painting.id %>
+						            <%= submit_tag "Add to Cart", class: "btn btn-success" %>
+						          <% end %>
+						        </p>
+						    <% end %>
+					        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				</div>
+				<div class="panel-footer">
+					<p><a href="#" data-toggle="modal" data-target="#myModal_<%=painting.id %>">
+						<span class="glyphicon glyphicon-eye-open"></span>
+					</a></p>
+					<%= number_to_currency painting.price %>
+				</div>
+			</div>
+		</div>
+	<% end %>
+</div>

@@ -73,17 +73,25 @@
 
   <HR size="6" NOSHADE></hr>
     <div class="col-md-4 center-it">
-      <%= link_to "Home", root_path %>
+      <%= link_to "Gallery", root_path %>
+    </div>
+    <div class="col-md-4 center-it">
+      <div class="dropdown"> 
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> For Sale <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <% @categories.each do |cat| %>
+          <li><%= link_to cat.name, for_sale_path(cat_id: cat.id) %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
     <div class="col-md-4 center-it">
       <% if user_signed_in? %> 
         <%= link_to view_order_path do %>
 
           <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="account-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Account
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="account-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account<span class="caret"></span></a>
+            <ul class="dropdown-menu">
               <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
               <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
             </ul>
@@ -98,9 +106,9 @@
 
     </div>
 
-
 </div>
 
+  <HR size="6" NOSHADE></hr>
 
   <%= yield %>
 </div>
