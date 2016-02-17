@@ -46,52 +46,62 @@
 </head>
 <body>
 
-<p>&nbsp</p>
-
-<div class="col-md-2">
-  <p><%= image_tag "bangslogo.png", width: 200, class: "img-responsive" %></p>
-</div>
-<div class="col-md-7">
-  <h1>Leila Jacob</h1>
-</div>
-<div class="col-md-3">
-  <% if user_signed_in? %> 
-    <%= link_to view_order_path do %>
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-circle fa-stack-2x"></i>
-        <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
-      </span>
-    <% end %>
-  <% end %>
-</div>
+<div class="container">
 
 <p>&nbsp</p>
 
-<HR WIDTH="60%" NOSHADE></hr>
-  <div class="col-md-4">
-    <%= link_to "Home", root_path %>
+<div class="row">
+  <div class="col-md-2 center-it">
+    <p><%= image_tag "bangslogo.png", width: 200, class: "img-responsive" %></p>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-8">
+    <h1>Leila Jacob</h1>
+  </div>
+  <div class="col-md-2">
     <% if user_signed_in? %> 
       <%= link_to view_order_path do %>
-      <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" id="account-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Account
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="account-menu">
-          <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
-          <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-        </ul>
-      </div>
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
+        </span>
       <% end %>
-    <% else %>
-        <%= link_to "Log In", new_user_session_path %>
-        <%= link_to "Sign Up", new_user_registration_path %>
     <% end %>
   </div>
-<HR WIDTH="60%" NOSHADE></hr>
+</div>
 
-<div class="container">
+<div class="row">
+
+  <HR size="6" NOSHADE></hr>
+    <div class="col-md-4 center-it">
+      <%= link_to "Home", root_path %>
+    </div>
+    <div class="col-md-4 center-it">
+      <% if user_signed_in? %> 
+        <%= link_to view_order_path do %>
+
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="account-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Account
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="account-menu">
+              <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+              <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </div>
+
+        <% end %>
+
+      <% else %>
+          <%= link_to "Log In", new_user_session_path %>
+          <%= link_to "Sign Up", new_user_registration_path %>
+      <% end %>
+
+    </div>
+
+
+</div>
+
+
   <%= yield %>
 </div>
 
