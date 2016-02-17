@@ -3,6 +3,8 @@ class PaintingsController < ApplicationController
 
   before_filter  :authenticate_user!, :except => [:index, :show]
 
+  belongs_to :category
+
 
   # GET /paintings
   # GET /paintings.json
