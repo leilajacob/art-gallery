@@ -6,7 +6,7 @@ class WelcomeController < ApplicationController
 	end
 
 	def for_sale
-		@paintings = Painting.where(category: params[:cat_id])
+		@paintings = Painting.where(category: params[:cat_id]).order(created_at: :desc)
 		@category = Category.find(params[:cat_id])
 	end
 

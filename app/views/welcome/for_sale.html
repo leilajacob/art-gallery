@@ -1,9 +1,3 @@
-
-
-<HR WIDTH="60%" NOSHADE></hr>
-	<h2 class="center-it"><%= @category.name %></h2>
-<HR WIDTH="60%" NOSHADE></hr>
-
 <div class="row">
 <% @paintings.each do |painting| %>
 		<div class="col-md-4 center-it">
@@ -29,7 +23,7 @@
 					        <p><%= painting.description %></p>
 					      </div>
 					      <div class="modal-footer">
-					      	<% if painting.quantity > 0 %>
+					      	<% if painting.quantity == 1 %>
 						        <p>
 						          <%= form_tag(add_to_cart_path, class: "form-inline") do %>
 						            

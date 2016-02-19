@@ -51,12 +51,14 @@
 <p>&nbsp</p>
 
 <div class="row">
+  <%= link_to root_path do %>
   <div class="col-md-2 center-it">
     <p><%= image_tag "bangslogo.png", width: 200, class: "img-responsive" %></p>
   </div>
   <div class="col-md-8">
     <h1>Leila Jacob</h1>
   </div>
+  <% end %>
   <div class="col-md-2">
     <% if user_signed_in? %> 
       <%= link_to view_order_path do %>
