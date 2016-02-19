@@ -1,9 +1,9 @@
 class CartController < ApplicationController
 
-	before_filter  :authenticate_user!, :except => [:add_to_cart, :view_order]
+  before_filter :authenticate_user!, except: [:add_to_cart, :view_order]
 
   def add_to_cart
-  	painting = Painting.find(params[:painting_id])
+    painting = Painting.find(params[:painting_id])
     if painting.quantity < params[:qty].to_i
       redirect_to painting, notice: "Not enough quantity in stock."
     else
@@ -28,31 +28,59 @@ class CartController < ApplicationController
     end 
   end
 
+  def remove_from_cart
+    LineItem.find(params[:id]).destroy
+
+    redirect_to view_order_path
+  end
+
+  def edit_line_item
+    line_item = LineItem.find(params[:id])
+
+    if Painting.find(line_item.painting_id).quantity < params[:qty].to_i
+      redirect_to view_order_path, notice: "Not enough quantity in stock." 
+    else
+      line_item.quantity = params[:qty].to_i
+      line_item.save
+      redirect_to view_order_path
+    end
+  end
+
   def view_order
-  	@line_items = LineItem.all
+    if user_signed_in? 
+     @line_items = LineItem.where(customer_key: current_user.id.to_s)
+    else
+      @line_items = LineItem.where(customer_key: remote_ip)
+    end
   end
 
   def checkout
-  	@line_items = LineItem.all
-  	@order = Order.new
-  	@order.user_id = current_user.id
+    @line_items = LineItem.all
+    @order = Order.new
+    @order.user_id = current_user.id
 
-  	sum = 0
+    sum = 0
 
-  	@line_items.each do |line_item|
-  		sum += line_item.line_item_total
-  	end
+    @line_items.each do |line_item|
+      @order.order_items[line_item.painting_id] = line_item.quantity
+      sum += line_item.line_item_total
+    end
 
-  	@order.subtotal = sum
-  	@order.sales_tax = sum * 0.07
-  	@order.grand_total = sum + @order.sales_tax
-  	@order.save
+    @order.subtotal = sum
+    @order.sales_tax = sum * 0.07
+    @order.grand_total = @order.subtotal + @order.sales_tax
+    @order.save
 
-  	LineItem.destroy_all
+    @line_items.each do |line_item|
+      line_item.painting.quantity -= line_item.quantity
+      line_item.painting.save
+    end
+
+    @line_items.destroy_all
   end
 
   def order_complete
-  	@order = Order.find(params[:order_id])
+    @order = Order.find(params[:order_id])
     @amount = (@order.grand_total.to_f.round(2) * 100).to_i
 
     customer = Stripe::Customer.create(
@@ -72,3 +100,4 @@ class CartController < ApplicationController
     redirect_to charges_path
   end
 end
+

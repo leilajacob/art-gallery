@@ -29,10 +29,9 @@
 					        <p><%= painting.description %></p>
 					      </div>
 					      <div class="modal-footer">
-					      	<% if painting.quantity > 0 %>
+					      	<% if painting.quantity == 1 %>
 						        <p>
 						          <%= form_tag(add_to_cart_path, class: "form-inline") do %>
-						            <%= number_field_tag :quantity, nil, min: 1, placeholder: "How Many?" %>
 						            <%= hidden_field_tag :painting_id, painting.id %>
 						            <%= submit_tag "Add to Cart", class: "btn btn-success" %>
 						          <% end %>

@@ -15,8 +15,6 @@ class PaintingsController < ApplicationController
   # GET /paintings/1
   # GET /paintings/1.json
   def show
-    @painting = Painting.find(params[:id])
-
   end
 
   # GET /paintings/new
