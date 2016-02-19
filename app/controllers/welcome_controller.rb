@@ -2,7 +2,7 @@ class WelcomeController < ApplicationController
 
 
 	def index
-		@paintings = Painting.all
+		@paintings = Painting.order(created_at: :desc)
 	end
 
 	def for_sale
