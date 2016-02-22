@@ -68,10 +68,12 @@
 <div class="row">
 
   <HR size="6" NOSHADE></hr>
-    <div class="col-md-3 center-it">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-2 center-it">
       <%= link_to "Gallery", root_path %>
     </div>
-    <div class="col-md-3 center-it">
+    <div class="col-md-2 center-it">
       <div class="dropdown"> 
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> For Sale <span class="caret"></span></a>
         <ul class="dropdown-menu">
@@ -81,10 +83,10 @@
         </ul>
       </div>
     </div>
-    <div class="col-md-3 center-it">
+    <div class="col-md-2 center-it">
       <%= mail_to "leilajacob@me.com", "Contact" %>
     </div>
-    <div class="col-md-3 center-it">
+    <div class="col-md-2 center-it">
       <% if user_signed_in? %> 
         <%= link_to view_order_path do %>
 
@@ -108,6 +110,8 @@
           </div>
       <% end %>
 
+    </div>
+    <div class="col-md-2">
     </div>
 
 </div>

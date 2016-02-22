@@ -8,7 +8,7 @@
 	<div id="wrapper">
 		<div id="columns">
 			<% @paintings.each do |painting| %>
-				<div class="pin">
+				<div class="pin center-it">
 
 
 					<!-- Button trigger modal -->
@@ -39,8 +39,8 @@
 
 				
 					<p><a href="#" data-toggle="modal" data-target="#myModal_<%=painting.id %>">
-						<span class="glyphicon glyphicon-eye-open"></span> <%= number_to_currency painting.price %>
-					</a></p>
+						<span class="glyphicon glyphicon-eye-open"></span></a> &nbsp &nbsp &nbsp<%= number_to_currency painting.price %>
+					</p>
 					
 					</div>
 				<% end %>
@@ -48,5 +48,3 @@
 
 			</div>
 		</div>
-	
-<p>&nbsp</p>
