@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :paintings
   
   root 'welcome#index'
-
+  get 'contact' => 'welcome#contact'
   get 'sold' => 'welcome#sold'
   get 'for_sale' => 'welcome#for_sale'
   # The priority is based upon order of creation: first created -> highest priority.

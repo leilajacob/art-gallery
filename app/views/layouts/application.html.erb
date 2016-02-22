@@ -58,26 +58,20 @@
   <div class="col-md-8">
     <h1>Leila Jacob</h1>
   </div>
-  <% end %>
   <div class="col-md-2">
-    <% if user_signed_in? %> 
-      <%= link_to view_order_path do %>
-        <span class="fa-stack fa-lg">
-          <i class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
-        </span>
-      <% end %>
-    <% end %>
+    
   </div>
+  <% end %>
+  
 </div>
 
 <div class="row">
 
   <HR size="6" NOSHADE></hr>
-    <div class="col-md-4 center-it">
+    <div class="col-md-3 center-it">
       <%= link_to "Gallery", root_path %>
     </div>
-    <div class="col-md-4 center-it">
+    <div class="col-md-3 center-it">
       <div class="dropdown"> 
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> For Sale <span class="caret"></span></a>
         <ul class="dropdown-menu">
@@ -87,7 +81,10 @@
         </ul>
       </div>
     </div>
-    <div class="col-md-4 center-it">
+    <div class="col-md-3 center-it">
+      <%= mail_to "leilajacob@me.com", "Contact" %>
+    </div>
+    <div class="col-md-3 center-it">
       <% if user_signed_in? %> 
         <%= link_to view_order_path do %>
 

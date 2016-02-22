@@ -5,16 +5,16 @@
 	<h2 class="center-it"> Gallery </h2>
 <HR WIDTH="60%" NOSHADE></hr>
 
-	<% @paintings.each do |painting| %>
-		<div class="col-md-4 center-it">
+	<div id="wrapper">
+		<div id="columns">
+			<% @paintings.each do |painting| %>
+				<div class="pin">
 
-			<div class="panel panel-default">
-  				<div class="panel-body">
+
 					<!-- Button trigger modal -->
 					<p><a href="#" data-toggle="modal" data-target="#myModal_<%=painting.id %>">
 						<%= image_tag painting.image.url(:medium) %>
 					</a></p>
-
 					<!-- Modal -->
 					<div class="modal fade" id="myModal_<%= painting.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 					  <div class="modal-dialog" role="document">
@@ -28,29 +28,25 @@
 					        <p><%= number_to_currency painting.price %></p>
 					        <p><%= painting.description %></p>
 					      </div>
-					      <div class="modal-footer">
-					      	<% if painting.quantity == 1 %>
-						        <p>
-						          <%= form_tag(add_to_cart_path, class: "form-inline") do %>
-						            <%= hidden_field_tag :painting_id, painting.id %>
-						            <%= submit_tag "Add to Cart", class: "btn btn-success" %>
-						          <% end %>
-						        </p>
-						    <% end %>
+					     
+
+
 					        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					      </div>
 					    </div>
 					  </div>
-					</div>
-				</div>
-				<div class="panel-footer">
+
+
+				
 					<p><a href="#" data-toggle="modal" data-target="#myModal_<%=painting.id %>">
-						<span class="glyphicon glyphicon-eye-open"></span>
+						<span class="glyphicon glyphicon-eye-open"></span> <%= number_to_currency painting.price %>
 					</a></p>
-					<%= number_to_currency painting.price %>
-				</div>
+					
+					</div>
+				<% end %>
+
+
 			</div>
 		</div>
-	<% end %>
-
+	
 <p>&nbsp</p>
