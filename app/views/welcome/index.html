@@ -1,5 +1,4 @@
-<div class="jumbotron">
-</div>
+<p><%= image_tag "leila-jacob.jpg", class: "img-responsive" %></p>
 
 <HR WIDTH="60%" NOSHADE></hr>
 	<h2 class="center-it"> Gallery </h2>
@@ -27,6 +26,8 @@
 					        <p><%= image_tag painting.image.url(:medium) %></p>
 					        <p><%= number_to_currency painting.price %></p>
 					        <p><%= painting.description %></p>
+					        <p><%= painting.size %></p>
+        					<p><%= painting.materials %></p>
 					      </div>
 					     
 
