@@ -37,10 +37,14 @@ gem 'figaro'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+#for our local server:
 group :development do
   gem 'sqlite3'
 end
 
+#for Heroku:
 group :production do
-	gem 'pg'
+  gem 'pg'
+  gem 'rails_12factor'
+  gem 'aws-sdk', '< 2.0'
 end
