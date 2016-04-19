@@ -7,3 +7,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 categories = Category.create([{ name: 'Sold' }, { name: 'For Sale' }])
+
+User.new({ :email => 'leilajacob@me.com', :password => 'lj007670', :password_confirmation => 'lj007670'}).save
