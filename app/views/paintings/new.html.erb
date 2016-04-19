@@ -1,15 +1,9 @@
-<% if can? :update, @painting %>
-
 <h1>New Painting</h1>
 
 <%= render 'form' %>
 
 <%= link_to 'Back', paintings_path %>
 
-<% else %>
-	<h1> Not Allowed </h1> 
-	<%= link_to 'Back', root_path %>
-<% end %>
 
 <p>&nbsp</p>
 <p>&nbsp</p>
